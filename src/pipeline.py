@@ -110,7 +110,7 @@ def evaluate_pipeline(search: HybridSearch, reranker: CrossEncoderReranker):
         print(f"  {'✓' if s >= 0.75 else '✗'} {m}: {s:.4f}")
 
     failures = failure_analysis(results.get("per_question", []))
-    save_report(results, failures)
+    save_report(results, failures, path="reports/ragas_report.json")
     return results
 
 

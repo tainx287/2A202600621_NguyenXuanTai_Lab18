@@ -64,11 +64,14 @@ def run_tests() -> tuple[int, int]:
         passed = total = 0
         for part in summary.split(","):
             part = part.strip()
+            tokens = part.split()
             if "passed" in part:
-                passed = int(part.split()[0])
+                idx = tokens.index("passed")
+                passed = int(tokens[idx - 1])
                 total += passed
             if "failed" in part:
-                total += int(part.split()[0])
+                idx = tokens.index("failed")
+                total += int(tokens[idx - 1])
         return passed, total
     except Exception as e:
         print(f"  ⚠️  pytest error: {e}")
